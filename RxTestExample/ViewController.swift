@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
+    
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let vm = ViewModel()
+        
+        vm.exampleObservable
+            .subscribe(onNext: { value in
+                print(value)
+            })
+            .disposed(by: bag)
+
+        vm.next("a")
+        vm.next("b")
+        vm.next("c")
+        vm.complete()
     }
-
-
 }
 
