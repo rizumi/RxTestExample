@@ -7,28 +7,43 @@
 //
 
 import XCTest
-@testable import RxTestExample
+import RxSwift
+import RxTest
 
 class RxTestExampleTests: XCTestCase {
+    
+    private let bag = DisposeBag()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testExample() {
+        let vm = ViewModel()
+        
+        let scheduler = TestScheduler(initialClock: 0)
+        scheduler.scheduleAt(0) {
+            vm.next("aaa")
         }
+        scheduler.scheduleAt(10) {
+            vm.next("bbb")
+        }
+        scheduler.scheduleAt(20) {
+            vm.complete()
+        }
+        
+        let observer = scheduler.createObserver(String.self)
+        vm.exampleObservable
+            .subscribe(onNext: { value in
+                observer.onNext(value)
+            }, onCompleted: {
+                observer.onCompleted()
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        XCTAssertEqual(observer.events, [
+            Recorded.next(0, "aaa"),
+            Recorded.next(10, "bbb"),
+            Recorded.completed(20)
+        ])
     }
 
 }

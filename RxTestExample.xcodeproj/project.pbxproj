@@ -19,6 +19,11 @@
 		7A76EC6A24762A9E00E3E154 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC6724762A9E00E3E154 /* RxSwift.framework */; };
 		7A76EC6D24762B1600E3E154 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EC6C24762B1600E3E154 /* ViewModel.swift */; };
 		7A76EC6E24762B1600E3E154 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EC6C24762B1600E3E154 /* ViewModel.swift */; };
+		7A76EC6F24762CF000E3E154 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC6524762A9E00E3E154 /* RxCocoa.framework */; };
+		7A76EC7024762CF000E3E154 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC6624762A9E00E3E154 /* RxRelay.framework */; };
+		7A76EC7124762CF000E3E154 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC6724762A9E00E3E154 /* RxSwift.framework */; };
+		7A76EC7424762CF000E3E154 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC7224762CF000E3E154 /* RxBlocking.framework */; };
+		7A76EC7524762CF000E3E154 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A76EC7324762CF000E3E154 /* RxTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,8 @@
 		7A76EC6624762A9E00E3E154 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		7A76EC6724762A9E00E3E154 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		7A76EC6C24762B1600E3E154 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7A76EC7224762CF000E3E154 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		7A76EC7324762CF000E3E154 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A76EC7424762CF000E3E154 /* RxBlocking.framework in Frameworks */,
+				7A76EC7524762CF000E3E154 /* RxTest.framework in Frameworks */,
+				7A76EC6F24762CF000E3E154 /* RxCocoa.framework in Frameworks */,
+				7A76EC7024762CF000E3E154 /* RxRelay.framework in Frameworks */,
+				7A76EC7124762CF000E3E154 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +128,8 @@
 		7A76EC6424762A9E00E3E154 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A76EC7224762CF000E3E154 /* RxBlocking.framework */,
+				7A76EC7324762CF000E3E154 /* RxTest.framework */,
 				7A76EC6524762A9E00E3E154 /* RxCocoa.framework */,
 				7A76EC6624762A9E00E3E154 /* RxRelay.framework */,
 				7A76EC6724762A9E00E3E154 /* RxSwift.framework */,
@@ -151,6 +165,7 @@
 				7A76EC512476286600E3E154 /* Sources */,
 				7A76EC522476286600E3E154 /* Frameworks */,
 				7A76EC532476286600E3E154 /* Resources */,
+				7A76EC7624762CFC00E3E154 /* Copy Frameworks For Carthage */,
 			);
 			buildRules = (
 			);
@@ -177,7 +192,6 @@
 					};
 					7A76EC542476286600E3E154 = {
 						CreatedOnToolsVersion = 11.4.1;
-						TestTargetID = 7A76EC3E2476286300E3E154;
 					};
 				};
 			};
@@ -232,6 +246,29 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+			);
+			name = "Copy Frameworks For Carthage";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		7A76EC7624762CFC00E3E154 /* Copy Frameworks For Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = "Copy Frameworks For Carthage";
 			outputFileListPaths = (
@@ -419,6 +456,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RxTestExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +478,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RxTestExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,8 +494,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RxTestExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +510,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxTestExample.app/RxTestExample";
 			};
 			name = Debug;
 		};
@@ -476,8 +517,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RxTestExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,7 +533,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxTestExample.app/RxTestExample";
 			};
 			name = Release;
 		};
